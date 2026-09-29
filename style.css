@@ -1,0 +1,337 @@
+/* ===========================================================
+   CCS Department Enrollment Form
+   Palette: #FF5A1F (primary) · #FF9F68 (secondary)
+            #FFD9B3 (tint) · #2B2A27 (ink) · #F5F1EA (paper)
+   =========================================================== */
+
+:root {
+  --primary: #ff5a1f;
+  --secondary: #ff9f68;
+  --tint: #ffd9b3;
+  --ink: #2b2a27;
+  --paper: #f5f1ea;
+
+  --ink-soft: #6b6862;
+  --line: #e3dccd;
+  --radius: 10px;
+  --shadow: 0 10px 30px rgba(43, 42, 39, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--paper);
+  color: var(--ink);
+  font-family:
+    "Segoe UI",
+    system-ui,
+    -apple-system,
+    sans-serif;
+  padding: 48px 24px;
+}
+
+main {
+  max-width: 980px;
+  margin: 0 auto;
+  gap: 28px;
+  align-items: start;
+}
+
+@media (max-width: 760px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+}
+
+h2 {
+  margin: 0 0 20px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  color: var(--ink);
+}
+
+/* ---- Panels ---- */
+.panel,
+.form-panel,
+.card-panel {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: var(--shadow);
+}
+
+.card-panel {
+  margin-top: 20px;
+  display: none;
+}
+
+.form-panel {
+  border-top: 4px solid var(--primary);
+}
+
+/* ---- Fields ---- */
+.field {
+  margin-bottom: 18px;
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 480px) {
+  .field-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="tel"],
+input[type="date"],
+select,
+textarea {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  outline: none;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+textarea {
+  resize: vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(255, 90, 31, 0.18);
+}
+
+input::placeholder {
+  color: #a9a49a;
+}
+
+/* ---- Fieldsets: gender / hobbies ---- */
+fieldset.field {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 14px 16px 16px;
+  margin: 0 0 18px;
+}
+
+legend {
+  padding: 0 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.radio-group,
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+}
+
+.radio-group label,
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 400;
+  margin: 0;
+  cursor: pointer;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  accent-color: var(--primary);
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+/* ---- Range slider ---- */
+input[type="range"] {
+  width: 100%;
+  accent-color: var(--primary);
+}
+
+#skillLevelOut {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+/* ---- Actions ---- */
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.btn {
+  flex: 1;
+  padding: 12px 18px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition:
+    transform 0.08s ease,
+    background 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn--primary {
+  background: var(--primary);
+  color: #fff;
+}
+
+.btn--primary:hover {
+  background: #e94f16;
+}
+
+.btn--ghost {
+  background: transparent;
+  border-color: var(--line);
+  color: var(--ink);
+}
+
+.btn--ghost:hover {
+  border-color: var(--ink-soft);
+}
+
+/* ---- Output card ---- */
+.card-panel h2 {
+  margin-bottom: 16px;
+}
+
+.id-card {
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: var(--radius);
+  padding: 20px;
+  min-height: 220px;
+  position: relative;
+  overflow: hidden;
+}
+
+.id-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(
+    90deg,
+    var(--primary),
+    var(--secondary),
+    var(--tint)
+  );
+}
+
+.id-card__topline {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: var(--tint);
+  margin-bottom: 18px;
+  padding-top: 4px;
+}
+
+.id-card--empty .id-card__empty-state {
+  color: var(--paper);
+}
+
+.id-card__empty-state p {
+  margin: 0 0 6px;
+}
+
+.id-card__empty-state .muted {
+  color: #b7b3a9;
+  font-size: 0.85rem;
+}
+
+/* Filled-state helpers (for use once the card is populated via JS) */
+.id-card__name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 4px;
+}
+
+.id-card__meta {
+  font-size: 0.85rem;
+  color: var(--tint);
+  margin: 0 0 12px;
+}
+
+.id-card__row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  padding: 6px 0;
+  border-top: 1px solid rgba(245, 241, 234, 0.12);
+}
+
+.id-card__tag {
+  display: inline-block;
+  background: var(--secondary);
+  color: var(--ink);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 999px;
+  margin: 3px 6px 0 0;
+}
+
+/* ---- Status log ---- */
+.status-log {
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 0;
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  max-height: 140px;
+  overflow-y: auto;
+}
+
+.status-log li {
+  padding: 6px 0;
+  border-top: 1px solid var(--line);
+}
+
+.status-log li:first-child {
+  border-top: none;
+}

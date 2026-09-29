@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Info Card</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <section class="form-panel">
+        <h2>CCS Department Enrollment Form</h2>
+        <form id="enrollmentForm">
+          <div class="field">
+            <label for="fullName">Full name</label>
+            <input
+              type="text"
+              id="fullName"
+              name="fullName"
+              placeholder="Jhon Melvy Regidor"
+              required
+            />
+          </div>
+
+          <div class="field">
+            <label for="email">Email address</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="jm@example.com"
+              required
+            />
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="age">Age</label>
+              <input
+                type="number"
+                id="age"
+                name="age"
+                min="0"
+                max="120"
+                placeholder="19"
+                required
+              />
+            </div>
+            <div class="field">
+              <label for="phone">Phone number</label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="09XX XXX XXXX"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="birthdate">Birthdate</label>
+              <input type="date" id="birthdate" name="birthdate" required />
+            </div>
+            <div class="field">
+              <label for="course">Course</label>
+              <select id="course" name="course" required>
+                <option value="">Select one</option>
+                <option value="BSIT">BSIT</option>
+                <option value="BSCS">BSCS</option>
+                <option value="BSIS">BSIS</option>
+              </select>
+            </div>
+          </div>
+
+          <fieldset class="field">
+            <legend>Gender</legend>
+            <div class="radio-group">
+              <label
+                ><input type="radio" name="gender" value="Female" required />
+                Female</label
+              >
+              <label
+                ><input type="radio" name="gender" value="Male" /> Male</label
+              >
+              <label
+                ><input type="radio" name="gender" value="Prefer not to say" />
+                Prefer not to say</label
+              >
+            </div>
+          </fieldset>
+
+          <fieldset class="field">
+            <legend>Hobbies</legend>
+            <div class="checkbox-group">
+              <label
+                ><input type="checkbox" class="hobby-check" value="Reading" />
+                Reading</label
+              >
+              <label
+                ><input type="checkbox" class="hobby-check" value="Gaming" />
+                Gaming</label
+              >
+              <label
+                ><input type="checkbox" class="hobby-check" value="Sports" />
+                Sports</label
+              >
+              <label
+                ><input type="checkbox" class="hobby-check" value="Music" />
+                Music</label
+              >
+              <label
+                ><input type="checkbox" class="hobby-check" value="Coding" />
+                Coding</label
+              >
+            </div>
+          </fieldset>
+
+          <div class="field">
+            <label for="skillLevel"
+              >Self-rated coding skill:
+              <span id="skillLevelOut">5</span>/10</label
+            >
+            <input
+              type="range"
+              id="skillLevel"
+              name="skillLevel"
+              min="0"
+              max="10"
+              value="5"
+              required
+            />
+          </div>
+
+          <div class="field">
+            <label for="bio">Short bio</label>
+            <textarea
+              id="bio"
+              name="bio"
+              rows="3"
+              placeholder="Tell us a bit about yourself..."
+              required
+            ></textarea>
+          </div>
+
+          <div class="actions">
+            <button type="submit" id="showInfoBtn" class="btn btn--primary">
+              Show My Info
+            </button>
+            <button type="reset" id="clearBtn" class="btn btn--ghost">
+              Clear form
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <section class="panel card-panel" aria-labelledby="card-heading">
+        <h2 id="card-heading">Your Information</h2>
+
+        <div id="outputCard" class="id-card id-card--empty">
+          <div class="id-card__topline">
+            <span>CCS DEPARTMENT</span>
+          </div>
+          <div class="id-card__empty-state">
+            <p>No data yet.</p>
+            <p class="muted">
+              Fill in the form and press "Show My Info" to generate your card.
+            </p>
+          </div>
+        </div>
+
+        <ul id="statusLog" class="status-log"></ul>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
